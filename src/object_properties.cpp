@@ -61,6 +61,7 @@ std::string ObjectProperties::dump()
 	os << ", automatic_rotate="<< automatic_rotate;
 	os << ", backface_culling="<< backface_culling;
 	os << ", glow=" << glow;
+	os << ", light_source=" << light_source;
 	os << ", nametag=" << nametag;
 	os << ", nametag_color=" << "\"" << nametag_color.getAlpha() << "," << nametag_color.getRed()
 			<< "," << nametag_color.getGreen() << "," << nametag_color.getBlue() << "\" ";

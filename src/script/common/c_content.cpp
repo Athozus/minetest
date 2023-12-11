@@ -198,7 +198,7 @@ void push_item_definition_full(lua_State *L, const ItemDefinition &i)
 }
 
 /******************************************************************************/
-const std::array<const char *, 33> object_property_keys = {
+const std::array<const char *, 34> object_property_keys = {
 	"hp_max",
 	"breath_max",
 	"physical",
@@ -221,6 +221,7 @@ const std::array<const char *, 33> object_property_keys = {
 	"automatic_face_movement_dir",
 	"backface_culling",
 	"glow",
+	"light_source",
 	"nametag",
 	"nametag_color",
 	"automatic_face_movement_max_rotation_per_sec",
@@ -360,6 +361,7 @@ void read_object_properties(lua_State *L, int index,
 	lua_pop(L, 1);
 	getboolfield(L, -1, "backface_culling", prop->backface_culling);
 	getintfield(L, -1, "glow", prop->glow);
+	getintfield(L, -1, "light_source", prop->light_source);
 
 	getstringfield(L, -1, "nametag", prop->nametag);
 	lua_getfield(L, -1, "nametag_color");
@@ -472,6 +474,8 @@ void push_object_properties(lua_State *L, ObjectProperties *prop)
 	lua_setfield(L, -2, "backface_culling");
 	lua_pushnumber(L, prop->glow);
 	lua_setfield(L, -2, "glow");
+	lua_pushnumber(L, prop->light_source);
+	lua_setfield(L, -2, "light_source");
 	lua_pushlstring(L, prop->nametag.c_str(), prop->nametag.size());
 	lua_setfield(L, -2, "nametag");
 	push_ARGB8(L, prop->nametag_color);
